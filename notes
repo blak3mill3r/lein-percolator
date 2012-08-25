@@ -1,0 +1,39 @@
+
+
+(
+ home/blake/w/percolator/lib/clojure-1.3.0.jar> 
+ home/blake/.vim/bundle/VimClojure/lib/server-2.3.0.jar> 
+ home/blake/w/percolator/lib/dev/lein-nailgun-1.1.1.jar> 
+ home/blake/w/percolator/lib/dev/server-2.2.0.jar> 
+ home/blake/w/percolator/lib/clojure-contrib-1.2.0.jar> 
+ home/blake/src/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201208080121-rel-r42/gwt-2.4.0/gwt-user.jar> 
+ home/blake/src/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201208080121-rel-r42/gwt-2.4.0/gwt-dev.jar> 
+ home/blake/src/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201208080121-rel-r42/gwt-2.4.0> 
+ home/blake/w/percolator/play> 
+ home/blake/w/percolator/play/lib/dev/gwt-dev-2.4.0.jar> 
+ home/blake/w/percolator/play/lib/dev/gwt-user-2.4.0.jar> 
+ home/blake/w/percolator/play/lib/dev/java.classpath-0.2.0.jar> 
+ home/blake/w/percolator/play/lib/dev/javaparser-1.0.8.jar> 
+ home/blake/w/percolator/play/lib/dev/lein-gwt-0.1.1.jar> 
+ home/blake/w/percolator/play/lib/dev/lein-nailgun-1.1.1.jar> 
+ home/blake/w/percolator/play/lib/dev/lein-percolator-0.0.1-SNAPSHOT.jar> 
+ home/blake/w/percolator/play/lib/dev/percolator-1.0.0-SNAPSHOT.jar> 
+ home/blake/w/percolator/play/lib/dev/server-2.3.5.jar> 
+ home/blake/w/percolator/play/lib/dev/validation-api-1.0.0.GA.jar> 
+ home/blake/w/percolator/play/lib/dev/validation-api-1.0.0.GA-sources.jar> 
+ home/blake/.lein/plugins/org.clojars.ibdknox-lein-nailgun-1.1.1.jar> 
+ home/blake/w/percolator/play/test> 
+ home/blake/w/percolator/play/src> 
+ home/blake/w/percolator/play/resources> 
+ home/blake/src/leiningen/src> 
+ home/blake/src/leiningen/classes> 
+ home/blake/src/leiningen/resources> 
+ home/blake/.lein/self-installs/leiningen-1.7.1-standalone.jar> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/sunpkcs11.jar> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/gnome-java-bridge.jar> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/localedata.jar> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/pulse-java.jar> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/sunjce_provider.jar> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/libjava-access-bridge-jni.so> 
+ usr/lib/jvm/java-6-openjdk/jre/lib/ext/dnsns.jar>)
+

@@ -1,8 +1,11 @@
+  
+
 (ns leiningen.perc
   ;(:require [clojure.java.classpath :as classpath])
   (:use [leiningen.core.eval :only [eval-in-project]])
   (:use [clojure.pprint :only [pprint]])
-  (:use [ns-tracker.core]))
+  (:use [ns-tracker.core])
+  (:import java.util.Date))
 
 ; build all percolator compilation units in the given namespace
 (defn- build-namespace [project cu-ns]
@@ -22,10 +25,21 @@
        (do
        (Thread/sleep 100)
        (doseq [ns-sym# (modified-namespaces#)]
-         ; reload the modified clojure source
-         (require ns-sym# :reload)
-         ; build all the percolator compilation units in that namespace
-         ( percolator.core/write-all-cus-to-path ns-sym# ~(:source-path project)))))))
+         (try
+           (print "Brewing ... ")
+           (let [starttime# (.getTime (Date.))]
+             ; load clojure code
+             (require ns-sym# :reload)
+             ; brew with percolator
+             ( percolator.core/write-all-cus-to-path ns-sym# ~(:source-path project))
+             (println (format "shit was brewed (took %d ms)."
+                              (- (.getTime (Date.)) starttime#))))
+           ; catch exceptions and spit out stack trace for now, would be nice to have
+           ; percolator errors in there, too
+           (catch Throwable e#
+             (println "OH NOES BADNESS HAPPEND :(")
+             (println e#)
+             (comment (clj-stacktrace.repl/pst+ e#) ))))))))
 
 (defn add-ns-tracker-dep [project]
   (if (some #(= 'ns-tracker (first %)) (:dependencies project))

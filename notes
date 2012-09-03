@@ -1,39 +1,38 @@
+this is the lein project for play
 
-
-(
- home/blake/w/percolator/lib/clojure-1.3.0.jar> 
- home/blake/.vim/bundle/VimClojure/lib/server-2.3.0.jar> 
- home/blake/w/percolator/lib/dev/lein-nailgun-1.1.1.jar> 
- home/blake/w/percolator/lib/dev/server-2.2.0.jar> 
- home/blake/w/percolator/lib/clojure-contrib-1.2.0.jar> 
- home/blake/src/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201208080121-rel-r42/gwt-2.4.0/gwt-user.jar> 
- home/blake/src/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201208080121-rel-r42/gwt-2.4.0/gwt-dev.jar> 
- home/blake/src/eclipse/plugins/com.google.gwt.eclipse.sdkbundle_2.4.0.v201208080121-rel-r42/gwt-2.4.0> 
- home/blake/w/percolator/play> 
- home/blake/w/percolator/play/lib/dev/gwt-dev-2.4.0.jar> 
- home/blake/w/percolator/play/lib/dev/gwt-user-2.4.0.jar> 
- home/blake/w/percolator/play/lib/dev/java.classpath-0.2.0.jar> 
- home/blake/w/percolator/play/lib/dev/javaparser-1.0.8.jar> 
- home/blake/w/percolator/play/lib/dev/lein-gwt-0.1.1.jar> 
- home/blake/w/percolator/play/lib/dev/lein-nailgun-1.1.1.jar> 
- home/blake/w/percolator/play/lib/dev/lein-percolator-0.0.1-SNAPSHOT.jar> 
- home/blake/w/percolator/play/lib/dev/percolator-1.0.0-SNAPSHOT.jar> 
- home/blake/w/percolator/play/lib/dev/server-2.3.5.jar> 
- home/blake/w/percolator/play/lib/dev/validation-api-1.0.0.GA.jar> 
- home/blake/w/percolator/play/lib/dev/validation-api-1.0.0.GA-sources.jar> 
- home/blake/.lein/plugins/org.clojars.ibdknox-lein-nailgun-1.1.1.jar> 
- home/blake/w/percolator/play/test> 
- home/blake/w/percolator/play/src> 
- home/blake/w/percolator/play/resources> 
- home/blake/src/leiningen/src> 
- home/blake/src/leiningen/classes> 
- home/blake/src/leiningen/resources> 
- home/blake/.lein/self-installs/leiningen-1.7.1-standalone.jar> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/sunpkcs11.jar> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/gnome-java-bridge.jar> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/localedata.jar> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/pulse-java.jar> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/sunjce_provider.jar> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/libjava-access-bridge-jni.so> 
- usr/lib/jvm/java-6-openjdk/jre/lib/ext/dnsns.jar>)
-
+{:compile-path "/home/blake/w/percolator/play/classes",
+ :group "play",
+ :percolator-namespaces [com.whatsys.test],
+ :source-path "/home/blake/w/percolator/play/src",         <---- spit java here
+ :gwt-options-devmode {},
+ :dependencies
+ [[org.clojure/clojure "1.4.0"]
+  [com.google.code.javaparser/javaparser "1.0.8"]
+  [percolator/percolator "1.0.0-SNAPSHOT"]],
+ :dev-dependencies
+ [[org.clojars.ibdknox/lein-nailgun "1.1.1"]
+  [vimclojure/server "2.3.5"]
+  [lein-gwt "0.1.1"]
+  [lein-percolator "0.0.1-SNAPSHOT"]
+  [com.google.gwt/gwt-user "2.4.0"]
+  [com.google.gwt/gwt-dev "2.4.0"]],
+ :name "play",
+ :checksum-deps true,
+ :root "/home/blake/w/percolator/play",
+ :jar-dir "/home/blake/w/percolator/play",
+ :gwt-modules ["com.whatsys.Play"],
+ :version "1.0.0-SNAPSHOT",
+ :java-source-path nil,                                  <---- good to know, spit java here if build with javac+lein
+ :percolator-options {},
+ :jar-exclusions [#"^\."],
+ :test-path "/home/blake/w/percolator/play/test",
+ :test-resources-path "/home/blake/w/percolator/play/test-resources",
+ :gwt-options
+ {:localWorkers 1, :war "war", :logdir "log", :logLevel INFO},
+ :target-dir "/home/blake/w/percolator/play",
+ :uberjar-exclusions [#"(?i)^META-INF/[^/]*\.SF$"],
+ :dev-resources-path "/home/blake/w/percolator/play/test-resources",
+ :library-path "/home/blake/w/percolator/play/lib",
+ :resources-path "/home/blake/w/percolator/play/resources",
+ :native-path "/home/blake/w/percolator/play/native",
+ :description "for building GWT interfaces with clojure"}

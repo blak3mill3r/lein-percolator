@@ -1,3 +1,10 @@
+hooray for ns-tracker
+
+; testing framework evan is using:
+  ;:dev-dependencies [[midje "1.4.0"]
+  ;                   ; NOTE: lein-midje requires different versions to be
+  ;                   ; installed for lein1 vs lein2 compatibility :(.
+  ;                   [lein-midje "1.0.10"]]
 this is the lein project for play
 
 {:compile-path "/home/blake/w/percolator/play/classes",

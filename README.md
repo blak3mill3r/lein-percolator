@@ -23,6 +23,7 @@ project.clj
 something like:
 ```bash
 $ lein perc
+$ lein perc dev
 ```
 maybe...
 

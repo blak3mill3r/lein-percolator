@@ -1,6 +1,6 @@
 (ns leiningen.perc
   ;(:require [clojure.java.classpath :as classpath])
-  (:use [leiningen.compile :only [eval-in-project]])
+  (:use [leiningen.core.eval :only [eval-in-project]])
   (:use [clojure.pprint :only [pprint]])
   (:use [ns-tracker.core]))
 
@@ -9,8 +9,6 @@
   (eval-in-project
     project
     `(percolator.core/write-all-cus-to-path '~cu-ns ~(:source-path project))
-    nil
-    nil
     `(require 'percolator.core '~cu-ns)))
 
 ; build all units in all configured percolator namespaces
@@ -36,8 +34,6 @@
     (eval-in-project
       project
       (dev-build-loop project [(:source-path project)] [] args)
-      nil
-      nil
       `(require 'ns-tracker.core 'percolator.core))))
 
 (defn perc [project & args]

@@ -27,12 +27,19 @@
          ; build all the percolator compilation units in that namespace
          ( percolator.core/write-all-cus-to-path ns-sym# ~(:source-path project)))))))
 
+(defn add-ns-tracker-dep [project]
+  (if (some #(= 'ns-tracker (first %)) (:dependencies project))
+    project
+    (update-in project [:dependencies] conj ['ns-tracker "0.2.0"])))
+
+
 ; for development cycle
 ; watch for changes and rebuild percolator namespaces as their source is modified
 (defn- dev-build [project & args]
   (do
     (eval-in-project
-      project
+      (-> project
+        (add-ns-tracker-dep))
       (dev-build-loop project [(:source-path project)] [] args)
       `(require 'ns-tracker.core 'percolator.core))))
 

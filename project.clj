@@ -8,6 +8,6 @@
                  [org.clojure/java.classpath   "0.2.0"]
                  [percolator/percolator        "1.0.0-SNAPSHOT"]
                  [fs                           "1.1.2" ]
-                 [ns-tracker                   "0.1.2" ]
+                 [ns-tracker                   "0.2.0" ]
                  ]
   :eval-in-leiningen true)

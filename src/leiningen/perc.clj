@@ -1,11 +1,24 @@
-  
-
 (ns leiningen.perc
-  ;(:require [clojure.java.classpath :as classpath])
   (:use [leiningen.core.eval :only [eval-in-project]])
   (:use [clojure.pprint :only [pprint]])
   (:use [ns-tracker.core])
   (:import java.util.Date))
+
+; FIXME split project perc dependencies into a separate project?
+;
+; so as to inject only one dependency
+
+(defn add-ns-tracker-dep [project]
+  "add ns-tracker to the project's classpath for dev-build loop"
+  (if (some #(= 'ns-tracker (first %)) (:dependencies project))
+    project
+    (update-in project [:dependencies] conj ['ns-tracker "0.2.1"])))
+
+(defn add-clj-stacktrace-dep [project]
+  "add ns-tracker to the project's classpath for dev-build loop"
+  (if (some #(= 'clj-stacktrace (first %)) (:dependencies project))
+    project
+    (update-in project [:dependencies] conj ['clj-stacktrace "0.2.5"])))
 
 ; build all percolator compilation units in the given namespace
 (defn- build-namespace [project cu-ns]
@@ -20,13 +33,15 @@
   [ perc-ns ( :percolator-namespaces project ) ] ( build-namespace project perc-ns )))
 
 (defn- dev-build-loop [project source-dirs opts args]
-  `(let [modified-namespaces# (ns-tracker [~@source-dirs])]
+  (do
+    (println "devbuildloop sourcedirs\n" ( concat source-dirs ["/home/blake/w/percolator/src"]))
+    `(let [modified-namespaces# (ns-tracker [~@( concat source-dirs ["/home/blake/w/percolator/src"])])]
      (while true
        (do
        (Thread/sleep 100)
        (doseq [ns-sym# (modified-namespaces#)]
          (try
-           (print "Brewing ... ")
+           (println "Brewing ... ")
            (let [starttime# (.getTime (Date.))]
              ; load clojure code
              (require ns-sym# :reload)
@@ -35,11 +50,10 @@
              (println (format "shit was brewed (took %d ms)."
                               (- (.getTime (Date.)) starttime#))))
            ; catch exceptions and spit out stack trace for now, would be nice to have
-           ; percolator errors in there, too
+           ; better percolator error messages in here, too
            (catch Throwable e#
              (println "OH NOES BADNESS HAPPEND :(")
-             (println e#)
-             (comment (clj-stacktrace.repl/pst+ e#) ))))))))
+             (clj-stacktrace.repl/pst+ e# ))))))) ))
 
 (defn add-ns-tracker-dep [project]
   (if (some #(= 'ns-tracker (first %)) (:dependencies project))
@@ -53,9 +67,10 @@
   (do
     (eval-in-project
       (-> project
-        (add-ns-tracker-dep))
+        (add-ns-tracker-dep)
+        (add-clj-stacktrace-dep))
       (dev-build-loop project [(:source-path project)] [] args)
-      `(require 'ns-tracker.core 'percolator.core))))
+      `(require 'ns-tracker.core 'percolator.core 'clj-stacktrace.repl))))
 
 (defn perc [project & args]
   (if (some #{"dev"} args)
